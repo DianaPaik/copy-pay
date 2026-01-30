@@ -1,9 +1,9 @@
 import QRCode from "qrcode";
 import fs from "fs";
 
-const url = "https://copy-pay.vercel.app/s/seller1/";
+const url = "https://copy-pay.vercel.app/s/seller5/";
 
-const out = "qr-seller1.png";
+const out = "qr-seller5.png";
 const png = await QRCode.toBuffer(url, {
   type: "png",
   width: 512,
