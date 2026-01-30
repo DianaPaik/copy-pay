@@ -18,6 +18,7 @@ export default function SellerPageClient() {
     const [qty, setQty] = useState<Record<string, number>>({});
     const [error, setError] = useState<string | null>(null);
     const [toast, setToast] = useState<string | null>(null);
+    const [confirmOpen, setConfirmOpen] = useState(false);
 
 
     useEffect(() => {
@@ -94,14 +95,63 @@ export default function SellerPageClient() {
         showToast("수량을 초기화했어요");
     };
 
-    const copyAccount = async () => {
-        if (!seller) return;
-
-        const text = seller.accountNo;
+    async function copyTextSafe(text: string) {
+        try {
+            if (navigator.clipboard?.writeText && window.isSecureContext) {
+                await navigator.clipboard.writeText(text);
+                return true;
+            }
+        } catch { }
 
         try {
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            ta.setAttribute("readonly", "");
+            ta.style.position = "fixed";
+            ta.style.left = "-9999px";
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            ta.setSelectionRange(0, ta.value.length);
+
+            const ok = document.execCommand("copy");
+            document.body.removeChild(ta);
+            return ok;
+        } catch {
+            return false;
+        }
+    }
+
+    const copyAccountSimple = async () => {
+        if (!seller) return;
+
+        const ok = await copyTextSafe(seller.accountNo);
+        if (ok) {
+            showToast("계좌가 복사되었습니다");
+        } else {
+            showToast("복사 실패(길게 눌러 복사)");
+        }
+    };
+
+    const copyAccountWithConfirm = async () => {
+        if (!seller) return;
+
+        const ok = await copyTextSafe(seller.accountNo);
+        if (ok) {
+            showToast("계좌가 복사되었습니다");
+            setConfirmOpen(true);
+        } else {
+            showToast("복사 실패(길게 눌러 복사)");
+        }
+    };
+
+    const copyAccount = async () => {
+        if (!seller) return;
+        const text = seller.accountNo;
+        try {
             await navigator.clipboard.writeText(text);
-            showToast("계좌번호를 복사했어요");
+            showToast("계좌가 복사되었습니다");
+            setConfirmOpen(true); // 이미 열려있으면 그대로 유지됨
             return;
         } catch { }
 
@@ -113,9 +163,15 @@ export default function SellerPageClient() {
         document.body.appendChild(ta);
         ta.focus();
         ta.select();
+        ta.setSelectionRange(0, ta.value.length); // iOS 대응
         try {
-            document.execCommand("copy");
-            showToast("계좌번호를 복사했어요");
+            const ok = document.execCommand("copy");
+            if (ok) {
+                showToast("계좌가 복사되었습니다");
+                setConfirmOpen(true);
+            } else {
+                showToast("복사 실패(길게 눌러 복사)");
+            }
         } catch {
             showToast("복사 실패(길게 눌러 복사)");
         } finally {
@@ -197,8 +253,11 @@ export default function SellerPageClient() {
                         </div>
 
                         <button
-                            onClick={copyAccount}
-                            className="shrink-0 rounded-xl bg-zinc-900 px-4 py-3 text-sm font-semibold text-white shadow-sm active:scale-[0.99]"
+                            onClick={copyAccountSimple}
+                            className={[
+                                "shrink-0 rounded-xl px-4 py-3 text-sm font-semibold shadow-sm active:scale-[0.99]",
+                                "bg-zinc-900 text-white",
+                            ].join(" ")}
                         >
                             복사
                         </button>
@@ -352,7 +411,7 @@ export default function SellerPageClient() {
                     </div>
 
                     <button
-                        onClick={copyAccount}
+                        onClick={copyAccountWithConfirm}
                         disabled={total === 0}
                         className={[
                             "h-11 rounded-xl px-4 text-sm font-semibold shadow-sm transition",
@@ -366,14 +425,78 @@ export default function SellerPageClient() {
                 </div>
             </div>
 
-            {/* Toast */}
+            {/* Toast (always top-most) */}
             {toast && (
-                <div className="fixed inset-x-0 top-4 mx-auto max-w-md px-4">
-                    <div className="rounded-xl bg-zinc-900 px-4 py-3 text-center text-sm font-medium text-white shadow-lg">
+                <div className="fixed inset-x-0 top-3 z-[60] mx-auto max-w-md px-4">
+                    <div className="rounded-2xl bg-zinc-900 px-4 py-3 text-center text-sm font-semibold text-white shadow-lg">
                         {toast}
                     </div>
                 </div>
             )}
+            {/* Confirm Modal */}
+            {confirmOpen && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+                    onClick={() => setConfirmOpen(false)}
+                    role="dialog"
+                    aria-modal="true"
+                >
+                    <div
+                        className="w-full max-w-md rounded-3xl bg-white p-5 shadow-xl"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="text-lg font-extrabold text-zinc-900">계좌 복사 완료</div>
+                        <div className="mt-1 text-sm text-zinc-500">
+                            아래 정보로 입금해주세요.
+                        </div>
+
+                        <div className="mt-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-4">
+                            <div className="text-sm font-semibold text-zinc-900">
+                                {seller.bankName} · {seller.holder}
+                            </div>
+                            <div className="mt-1 font-mono text-xl font-extrabold text-zinc-900">
+                                {seller.accountNo}
+                            </div>
+
+                            <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
+                                <div className="rounded-xl bg-white p-3">
+                                    <div className="text-xs font-semibold text-zinc-500">입금 금액</div>
+                                    <div className="mt-1 text-base font-extrabold text-zinc-900">
+                                        {formatWon(total)}
+                                    </div>
+                                </div>
+                                <div className="rounded-xl bg-white p-3">
+                                    <div className="text-xs font-semibold text-zinc-500">선택 수량</div>
+                                    <div className="mt-1 text-base font-extrabold text-zinc-900">
+                                        {totalItems}개
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-3 text-xs text-zinc-500">
+                                은행 앱에서 계좌 붙여넣기 후 금액을 확인해 주세요.
+                            </div>
+                        </div>
+
+                        <div className="mt-4 flex gap-2">
+                            <button
+                                onClick={() => setConfirmOpen(false)}
+                                className="h-11 flex-1 rounded-xl border border-zinc-200 bg-white text-sm font-semibold text-zinc-700 shadow-sm active:scale-[0.99]"
+                            >
+                                확인
+                            </button>
+
+                            <button
+                                onClick={copyAccount}
+                                className="h-11 flex-1 rounded-xl bg-zinc-900 text-sm font-semibold text-white shadow-sm active:scale-[0.99]"
+                            >
+                                다시 복사
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
+    
     );
 }

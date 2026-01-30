@@ -6,12 +6,32 @@
     "accountNo": "1002-581-940919",
     "holder": "백ㅈㅇ"
   },
-{
+  {
     "id": "seller2",
     "name": "깜빌",
     "bankName": "우리은행",
+    "accountNo": "1002-856-473126",
+    "holder": "ㅇㅈㅇ"
+  },
+  {
+    "id": "seller3",
+    "name": "단비",
+    "bankName": "",
+    "accountNo": "",
+    "holder": ""
+  },
+  {
+    "id": "seller4",
+    "name": "Mono",
+    "bankName": "우리은행",
     "accountNo": "1002-581-940919",
-    "holder": "깜빌"
-}
-
+    "holder": "백ㅈㅇ"
+  },
+  {
+    "id": "seller5",
+    "name": "이혜성",
+    "bankName": "우리은행",
+    "accountNo": "1002-856-473126",
+    "holder": "ㅇㅈㅇ"
+  }
 ]
