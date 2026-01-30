@@ -8,7 +8,7 @@
   },
   {
     "id": "seller2",
-    "name": "깜빌",
+    "name": "깜빌/먹군",
     "bankName": "우리은행",
     "accountNo": "1002-856-473126",
     "holder": "ㅇㅈㅇ"
@@ -16,9 +16,9 @@
   {
     "id": "seller3",
     "name": "단비",
-    "bankName": "",
-    "accountNo": "",
-    "holder": ""
+    "bankName": "신한은행",
+    "accountNo": "110436895394",
+    "holder": "ㅇㅎㅈ"
   },
   {
     "id": "seller4",

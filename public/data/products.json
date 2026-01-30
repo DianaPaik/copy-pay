@@ -10,7 +10,7 @@
     "genre": "프로젝트 세카이",
     "couple": "미즈에나",
     "page": 120,
-    "description": "미즈에나 소설 회지",
+    "description": "에나 시점 <사랑니>와 미즈키 시점의 <엔딩크레딧>을 한데 엮은 통합본입니다.",
     "imageUrl": "/images/사랑니엔딩크레딧.jpg",
     "stock": 30
   },
@@ -25,7 +25,7 @@
     "genre": "프로젝트 세카이",
     "couple": "미즈에나",
     "page": 26,
-    "description": "미즈에나 만화 회지",
+    "description": "폭설이 내리는 날, 미즈키와 에나가 단둘이 어디론가 떠납니다.",
     "imageUrl": "/images/차갑고차가운.webp",
     "stock": 30
   },
@@ -40,7 +40,7 @@
     "genre": "뱅드림",
     "couple": "하나사카가와 1-B",
     "page": 20,
-    "description": "굶주린 우이카, 우미리, 타키가 카레를 만들어먹을 뿐인 만화",
+    "description": "굶주린 우이카, 우미리, 타키가 카레를 만들어먹을 뿐인 만화입니다. (⚠️캐붕주의)",
     "imageUrl": "/images/카레를멈추지마.jpg",
     "stock": 30
   },
@@ -52,11 +52,11 @@
     "price": 2000,
     "active": true,
     "sort": 1,
-    "genre": "봇치더 록",
-    "couple": "이치사키",
-    "page": 140,
-    "description": "고교 시 두고 활동을 중단한 Leo/need. 그로부터 십 년이 흐르고, 이치카는 우주비행사가 되어 우주로 떠난다. 미지의 공간인 소행성대에서 이치카는 뜻밖의 존재와 마주하는데….",
-    "imageUrl": "/images/products/cold.jpg",
+    "genre": "봇치 더 록/히로이 키쿠리의 음주 일기",
+    "couple": "NCP",
+    "page": 12,
+    "description": "<봇치 더 록>, <히로이 키쿠리의 음주 일기>속 히로이 키쿠리 중심의 NCP 책",
+    "imageUrl": "/images/삶은 마시기 위해 살아가는가 살기 위해 마시는가.webp",
     "stock": 30
   },
   {
@@ -70,23 +70,23 @@
     "genre": "뱅드림!",
     "couple": "아논소요",
     "page": 0,
-    "description": "고교 시 두고 활동을 중단한 Leo/need. 그로부터 십 년이 흐르고, 이치카는 우주비행사가 되어 우주로 떠난다. 미지의 공간인 소행성대에서 이치카는 뜻밖의 존재와 마주하는데….",
-    "imageUrl": "/images/products/cold.jpg",
+    "description": "리버시블이나 NCP로 소비하셔도 됩니다. (아트지/86*175mm)",
+    "imageUrl": "/images/아논소요 킷사 컨셉 스티커.webp",
     "stock": 30
   },
   {
     "id": "p6",
     "sellerId": "seller3",
-    "name": "걸즈밴드크라이 연습 CRY 스티커",
+    "name": "걸즈 밴드 크라이-연습 CRY 스티커",
     "category": "스티커",
     "price": 4000,
     "active": true,
     "sort": 3,
-    "genre": "걸즈밴드크라이",
+    "genre": "걸즈 밴드 크라이",
     "couple": "",
     "page": 0,
-    "description": "카는 우주비행사가 되어 우주로 떠난다. 미지의 공간인 소행성대에서 이치카는 뜻밖의 존재와 마주하는데….",
-    "imageUrl": "/images/products/cold.jpg",
+    "description": "걸즈 밴드 크라이-연습 CRY 스티커(아트지/86*175mm)",
+    "imageUrl": "/images/연습 CRY 스티커.webp",
     "stock": 30
   },
   {
@@ -98,10 +98,10 @@
     "active": true,
     "sort": 1,
     "genre": "프로젝트 세카이",
-    "couple": "",
-    "page": 0,
-    "description": "",
-    "imageUrl": "/images/products/cold.jpg",
+    "couple": "미즈에나",
+    "page": 8,
+    "description": "평소 미즈에나로 생각하던 잡다한 이야기와 그림을 꽉꽉 눌러담아 보았습니다.",
+    "imageUrl": "/images/낙서잡담모음집.jpg",
     "stock": 30
   },
   {

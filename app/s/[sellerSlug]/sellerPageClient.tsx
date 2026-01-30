@@ -126,10 +126,13 @@ export default function SellerPageClient() {
         if (!seller) return;
 
         const ok = await copyTextSafe(seller.accountNo);
-        if (ok) {
-            showToast("계좌가 복사되었습니다");
-        } else {
+        if (!ok) {
             showToast("복사 실패(길게 눌러 복사)");
+            return;
+        }
+        showToast("계좌가 복사되었습니다");
+        if (total > 0) {
+            setConfirmOpen(true);
         }
     };
 
@@ -326,7 +329,7 @@ export default function SellerPageClient() {
                                                 {p.category && <span className="rounded-full bg-zinc-100 px-2 py-0.5">{p.category}</span>}
                                                 {p.genre && <span className="rounded-full bg-zinc-100 px-2 py-0.5">{p.genre}</span>}
                                                 {p.couple && <span className="rounded-full bg-zinc-100 px-2 py-0.5">{p.couple}</span>}
-                                                {typeof p.page === "number" && (
+                                                {typeof p.page === "number" && p.page > 0 && (
                                                     <span className="rounded-full bg-zinc-100 px-2 py-0.5">{p.page}p</span>
                                                 )}
                                             </div>
@@ -336,7 +339,7 @@ export default function SellerPageClient() {
                                             </div>
 
                                             {p.description && (
-                                                <div className="mt-2 line-clamp-2 text-xs text-zinc-500">
+                                                <div className="mt-2 line-clamp-3 text-sm leading-relaxed text-zinc-600">
                                                     {p.description}
                                                 </div>
                                             )}
@@ -487,7 +490,7 @@ export default function SellerPageClient() {
                             </button>
 
                             <button
-                                onClick={copyAccount}
+                                onClick={copyAccountWithConfirm}
                                 className="h-11 flex-1 rounded-xl bg-zinc-900 text-sm font-semibold text-white shadow-sm active:scale-[0.99]"
                             >
                                 다시 복사
