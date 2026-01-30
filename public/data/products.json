@@ -1,0 +1,32 @@
+[
+  {
+    "id": "p1",
+    "sellerId": "seller1",
+    "name": "사랑니 엔딩크레딧",
+    "category": "book",
+    "price": 11000,
+    "active": true,
+    "sort": 1,
+    "genre": "프로젝트 세카이",
+    "couple": "미즈에나",
+    "page": 120,
+    "description": "미즈에나 소설 회지",
+    "imageUrl": "/images/products/love_tooth.jpg",
+    "stock": 30
+  },
+  {
+    "id": "p2",
+    "sellerId": "seller2",
+    "name": "차갑고 차가운",
+    "category": "book",
+    "price": 5000,
+    "active": true,
+    "sort": 1,
+    "genre": "프로젝트 세카이",
+    "couple": "미즈에나",
+    "page": 26,
+    "description": "미즈에나 만화 회지",
+    "imageUrl": "/images/products/cold.jpg",
+    "stock": 30
+  }
+]

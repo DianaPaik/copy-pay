@@ -1,7 +1,12 @@
-import type { NextConfig } from "next";
+const isGithubPages = process.env.GITHUB_PAGES === "true";
+const repo = process.env.GITHUB_REPO_NAME || "copypay";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
+  ...(isGithubPages ? { output: "export" as const } : {}),
+  images: { unoptimized: true },
+  trailingSlash: true,
+  basePath: isGithubPages ? `/${repo}` : "",
+  assetPrefix: isGithubPages ? `/${repo}/` : "",
 };
 
 export default nextConfig;

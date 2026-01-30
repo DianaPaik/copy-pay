@@ -1,0 +1,17 @@
+[
+  {
+    "id": "seller1",
+    "name": "흰",
+    "bankName": "우리은행",
+    "accountNo": "1002-581-940919",
+    "holder": "백ㅈㅇ"
+  },
+{
+    "id": "seller2",
+    "name": "깜빌",
+    "bankName": "우리은행",
+    "accountNo": "1002-581-940919",
+    "holder": "깜빌"
+}
+
+]
