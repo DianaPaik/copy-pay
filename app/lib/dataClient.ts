@@ -21,6 +21,7 @@ export type Product = {
   page?: number;
   description?: string;
   imageUrl?: string;
+  imagePosition?: string;
   stock?: number;
 };
 

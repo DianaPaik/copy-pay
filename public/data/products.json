@@ -11,7 +11,7 @@
     "couple": "미즈에나",
     "page": 120,
     "description": "에나 시점 <사랑니>와 미즈키 시점의 <엔딩크레딧>을 한데 엮은 통합본입니다.",
-    "imageUrl": "/images/사랑니엔딩크레딧.jpg",
+    "imageUrl": "/images/사랑니엔딩크레딧_2.jpg",
     "stock": 30
   },
   {
@@ -42,6 +42,7 @@
     "page": 20,
     "description": "굶주린 우이카, 우미리, 타키가 카레를 만들어먹을 뿐인 만화입니다. (⚠️캐붕주의)",
     "imageUrl": "/images/카레를멈추지마.jpg",
+    "imagePosition": "50% 30%",
     "stock": 30
   },
   {
@@ -102,6 +103,7 @@
     "page": 8,
     "description": "평소 미즈에나로 생각하던 잡다한 이야기와 그림을 꽉꽉 눌러담아 보았습니다.",
     "imageUrl": "/images/낙서잡담모음집.jpg",
+    "imagePosition": "50% 60%",
     "stock": 30
   },
   {

@@ -303,6 +303,7 @@ export default function SellerPageClient() {
                                             alt={p.name}
                                             className="h-full w-full object-cover"
                                             loading="lazy"
+                                            style={{ objectPosition: p.imagePosition ?? "50% 50%" }}
                                         />
                                     ) : (
                                         <div className="flex h-full w-full items-center justify-center text-xs text-zinc-400">
