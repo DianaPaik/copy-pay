@@ -324,7 +324,11 @@ export default function SellerPageClient() {
                                 <div className="p-4">
                                     <div className="flex items-start justify-between gap-3">
                                         <div className="min-w-0">
-                                            <div className="truncate text-base font-semibold text-zinc-900">{p.name}</div>
+                                            <div className="text-base font-semibold leading-snug text-zinc-900">
+                                                {p.name.split("\n").map((line, i) => (
+                                                    <div key={i}>{line}</div>
+                                                ))}
+                                            </div>
 
                                             <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-zinc-500">
                                                 {p.category && <span className="rounded-full bg-zinc-100 px-2 py-0.5">{p.category}</span>}
@@ -340,7 +344,7 @@ export default function SellerPageClient() {
                                             </div>
 
                                             {p.description && (
-                                                <div className="mt-2 line-clamp-3 text-sm leading-relaxed text-zinc-600">
+                                                <div className="mt-2 line-clamp-5 text-sm leading-relaxed text-zinc-600">
                                                     {p.description}
                                                 </div>
                                             )}
